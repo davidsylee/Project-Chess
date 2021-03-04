@@ -1,5 +1,5 @@
 /**
- * Files: ChessPiece.java (and all its subclasses), GameBoard.java,
+ * Files: ChessPiece.java (and all subclasses), GameBoard.java,
  *        and RuleBook.java (however many there are)
  *
  * The main class for Project-Chess. Contains the main method for when the
@@ -16,6 +16,7 @@ public class MasterBoard {
     */
     public static void initializer() {
         GameBoard gameBoard = new GameBoard();
+        // TODO -----------------------------------
         return;
     }
 
