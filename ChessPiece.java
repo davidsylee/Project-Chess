@@ -14,12 +14,12 @@ public class ChessPiece {
 
     // retrieves and returns the private variable name
     public String getName() {
-        return this.name;
+        return name;
     }
 
     // retrieves and returns the private variable moveCount
     public int getMoveCount() {
-        return this.moveCount;
+        return moveCount;
     }
 
     // Checks to see if the ChessPiece can move to a given position
