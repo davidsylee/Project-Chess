@@ -7,31 +7,29 @@
  * This file contains instance attributes and methods for the chess pieces.
  *
 */
-public class ChessPiece {
+public abstract class ChessPiece {
 
     private static String name;
     private static int moveCount;
 
     // retrieves and returns the private variable name
-    public String getName() {
+    public static String getName() {
         return name;
     }
 
     // retrieves and returns the private variable moveCount
-    public int getMoveCount() {
+    public static int getMoveCount() {
         return moveCount;
     }
 
     // Checks to see if the ChessPiece can move to a given position
-    public boolean canMove(int newRow, int newCol) {
-        // TODO--------------------------------------
-        return false;
-    }
+    public abstract boolean canMove(ChessPiece[][] board);
 
     // Moves the ChessPiece on the GameBoard
-    public void move(int newRow, int newCol, GameBoard board) {
-        if (this.canMove(newRow, newCol)) {
-            board.setPos(newRow, newCol, this);
+    public void move(int newRow, int newCol, ChessPiece[][] board) {
+        if (piece.canMove(board)) {
+            // board[][];
+            // GOTTA WORK ON THIS IMPLEMENTATION
         }
         else {
             System.out.println("CANNOT MOVE PIECE TO GIVEN POSITION");
