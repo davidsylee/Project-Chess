@@ -25,6 +25,7 @@ public abstract class ChessPiece {
     // Checks to see if the ChessPiece can move to a given position
     public abstract boolean canMove(ChessPiece[][] board);
 
+/**
     // Moves the ChessPiece on the GameBoard
     public void move(int newRow, int newCol, ChessPiece[][] board) {
         if (piece.canMove(board)) {
@@ -35,4 +36,6 @@ public abstract class ChessPiece {
             System.out.println("CANNOT MOVE PIECE TO GIVEN POSITION");
         }
     }
+*/
+
 }
