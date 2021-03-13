@@ -12,23 +12,25 @@ import java.lang.*;
 
 public class GameBoard {
 
-    private ChessPiece[][] board;
+    private ChessPiece[][] position;
     private ArrayList<ChessPiece> trash;
 
 
     // Constructor for an instance of the GameBoard class
     public GameBoard() {
-        board = new ChessPiece[8][8];
+        position = new ChessPiece[8][8];
         trash = new ArrayList<ChessPiece>();
     }
 
-    /** TO DO
-
     // Constructor for an instance using a special RuleBook
-    public GameBoard(File input) {}
+    public GameBoard(String RuleBook) {
+        // TO-DO
+    }
 
-    */
-
+    // Retrieves the length of the board (row)
+    public int length() {
+        return position.length;
+    }
 
    /**
     * Retrieves the ChessPiece in this position of the board for the move
@@ -36,7 +38,7 @@ public class GameBoard {
     *
     */
     public ChessPiece getPos(int row, int col) {
-        return board[row][col];
+        return position[row][col];
     }
 
    /**
@@ -45,9 +47,14 @@ public class GameBoard {
     *
     */
     public void setPos(int row, int col, ChessPiece piece) {
-        if (board[row][col] != null) {
-            trash.add(board[row][col]);
+        int tempRowPos = piece.getRow();
+        int tempColPos = piece.getCol();
+
+        if (position[row][col] != null) {
+            trash.add(position[row][col]);
         }
-        board[row][col] = piece;
+        
+        position[tempRowPos][tempColPos] = null;
+        position[row][col] = piece;
     }
 }

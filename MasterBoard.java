@@ -15,30 +15,20 @@ public class MasterBoard {
     *
     */
     public static void initializer() {
-        GameBoard gameBoard = new GameBoard();
+        GameBoard board = new GameBoard();
         // TODO -----------------------------------
         return;
     }
 
     public static boolean unitTester() {
-        ChessPiece[][] board1 = new ChessPiece[8][8];
-        BlackPawn blackpawn1 = new BlackPawn(6, 0);
-        if (!blackpawn1.canMove(board1)) {
-            return false;
+        boolean compatability = true;
+        if (!BlackPawnTester.blackPawnTester()) {
+            compatability = false;
         }
-
-        BlackPawn blackpawn2 = new BlackPawn(0, 0);
-        blackpawn2.canMove(board1);
-        if (!blackpawn2.canMove(board1)) {
-            return false;
+        if (!WhitePawnTester.whitePawnTester()) {
+            compatability = false;
         }
-
-        BlackPawn blackpawn3 = new BlackPawn(2, 1);
-        blackpawn3.canMove(board1);
-        if (!blackpawn3.canMove(board1)) {
-            return false;
-        }
-        return true;
+        return compatability;
     }
 
     // The main method for once the game is launched
@@ -46,8 +36,11 @@ public class MasterBoard {
         System.out.println("Testing all Units...");
         System.out.println();
         if (!MasterBoard.unitTester()) {
+            System.out.println();
             System.out.println("Unit Test Failed!");
+            return;
         }
+        System.out.println();
         System.out.println("Unit Test Complete!");
         System.out.println();
         System.out.println("Initializing...");

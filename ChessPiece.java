@@ -9,21 +9,26 @@
 */
 public abstract class ChessPiece {
 
+    protected int rowPos;
+    protected int colPos;
+
     private static String name;
-    private static int moveCount;
 
     // retrieves and returns the private variable name
     public static String getName() {
         return name;
     }
 
-    // retrieves and returns the private variable moveCount
-    public static int getMoveCount() {
-        return moveCount;
+    public int getRow() {
+        return rowPos;
+    }
+
+    public int getCol() {
+        return colPos;
     }
 
     // Checks to see if the ChessPiece can move to a given position
-    public abstract boolean canMove(ChessPiece[][] board);
+    public abstract boolean canMove(GameBoard board);
 
 /**
     // Moves the ChessPiece on the GameBoard
