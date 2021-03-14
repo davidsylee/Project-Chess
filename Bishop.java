@@ -19,28 +19,72 @@ public class Bishop extends ChessPiece {
     }
 
     @Override
-    public boolean canMove(GameBoard board) {
+    public boolean canMove(GameBoard board, int row, int col) {
+        int rowDistance = rowPos - row;
+        int colDistance = colPos - col;
+
+        // Total distance the bishop is set to travel
+        int moveCountRow = abs(rowDistance);
+        int moveCountCol = abs(colDistance);
+
+        // These XY counts determine which direction the bishop will move
+        boolean RDcount = false;
+        boolean LUcount = false;
+        boolean LDcount = false;
+        boolean RUcount = false;
+
+        if ((rowDistance < 0) && (colDistance < 0)) {
+            RDcount = true;
+        }
+        else if ((rowDistance > 0) && (colDistance > 0)) {
+            LUcount = true;
+        }
+        else if ((rowDistance < 0) && (colDistance > 0)) {
+            LDcount = true;
+        }
+        else if ((rowDistance > 0) && (colDistance < 0)) {
+            RUcount = true;
+        }
+
+        tempRow = rowPos;
+        tempCol = colPos;
+
         // Moves diagonally until the piece reaches the end or a ChessPiece
-        while (true) {
-            if ((rowPos + 1 < board.length()) && (colPos + 1 < board.length()) &&
-                (board.getPos(rowPos + 1, colPos + 1) == null)) {
-                return true;
+        while ((moveCountRow >= 0) && (moveCountCol >= 0)) {
+
+            // To the diagonal right downward
+            if ((tempRow < board.length()) && (tempCol < board.length()) &&
+                (board.getPos(tempRow, tempCol) == null) && RDcount) {
+                tempRow += 1;
+                tempCol += 1;
             }
-            else if ((rowPos - 1 >= 0) && (colPos - 1 >= 0) &&
-                (board.getPos(rowPos - 1, colPos - 1) == null)) {
-                return true;
+            // To the diagonal left upward
+            else if ((tempRow >= 0) && (tempCol >= 0) &&
+                (board.getPos(tempRow, tempCol) == null) && LUcount) {
+                tempRow -= 1;
+                tempCol -= 1;
             }
-            else if ((rowPos + 1 < board.length()) && (colPos - 1 >= 0) &&
-                (board.getPos(rowPos + 1, colPos - 1) == null)) {
-                return true;
+            // To the diagonal left downward
+            else if ((TempRow < board.length()) && (TempCol >= 0) &&
+                (board.getPos(tempRow, tempCol) == null) && LDcount) {
+                tempRow += 1;
+                tempCol -= 1;
             }
-            else if ((rowPos - 1 >= 0) && (colPos + 1 < board.length()) &&
-                (board.getPos(rowPos - 1, colPos + 1) == null)) {
-                return true;
+            // To the diagonal right upward
+            else if ((TempRow >= 0) && (Tempcol < board.length()) &&
+                (board.getPos(tempRow, TempCol) == null) && RUcount) {
+                tempRow -= 1;
+                tempCol += 1;
             }
+            // The row and col arguments are not diagonal coordinates
             else {
                 break;
             }
+            moveCountRow -= 1;
+            moveCountCol -= 1;
+        }
+        if ((tempRow == row) && (tempCol == col)) {
+            return true;
         }
         return false;
     }

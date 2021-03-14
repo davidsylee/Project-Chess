@@ -20,21 +20,24 @@ public class BlackPawn extends ChessPiece {
     }
 
     @Override
-    public boolean canMove(GameBoard board) {
+    public boolean canMove(GameBoard board, int row, int col) {
         // When there is an open space in front of the Pawn
-        if ((rowPos - 1 >= 0) && (board.getPos(rowPos - 1, colPos) == null)) {
+        if ((row >= 0) && (board.getPos(row, col) == null) &&
+            (rowPos - 1 == row) && (colPos == col)) {
             return true;
         }
 
         // When there is an enemy to the diagonal left of the piece
-        else if ((rowPos - 1 >= 0) && (colPos - 1 >= 0) &&
-                 (board.getPos(rowPos - 1, colPos - 1) != null)) {
+        else if ((row >= 0) && (col >= 0) &&
+                 (board.getPos(row, col) != null) &&
+                 (rowPos - 1 == row) && (colPos - 1 == col)) {
             return true;
         }
 
         // When there is an enemy to the diagonal right of the piece
-        else if ((rowPos - 1 >= 0) && (colPos + 1 < board.length()) &&
-                 (board.getPos(rowPos - 1, colPos + 1) != null)) {
+        else if ((row >= 0) && (col < board.length()) &&
+                 (board.getPos(row, col) != null) &&
+                 (rowPos - 1 == row) && (colPos + 1 == col)) {
             return true;
         }
         return false;

@@ -9,8 +9,8 @@
 */
 public abstract class ChessPiece {
 
-    protected int rowPos;
-    protected int colPos;
+    public int rowPos;
+    public int colPos;
 
     private static String name;
 
@@ -28,7 +28,7 @@ public abstract class ChessPiece {
     }
 
     // Checks to see if the ChessPiece can move to a given position
-    public abstract boolean canMove(GameBoard board);
+    public abstract boolean canMove(GameBoard board, int row, int col);
 
 /**
     // Moves the ChessPiece on the GameBoard

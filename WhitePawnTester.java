@@ -1,7 +1,7 @@
 /**
  * Master class: MasterBoard.java
  *
- * Superclass files: WhitePawn.java
+ * Test file for: WhitePawn.java
  *
  * This file contains the tester method for WhitePawn instances.
  *
@@ -17,14 +17,14 @@ public class WhitePawnTester {
 
         // Checks if the WhitePawn can move forward to an empty space
         WhitePawn whitepawn1 = new WhitePawn(6, 0);
-        if (!whitepawn1.canMove(board)) {
+        if (!whitepawn1.canMove(board, 7, 0)) {
             System.out.println("Failure on test 1");
             return false;
         }
 
         // Checks if the WhitePawn is restricted after reaching border
         WhitePawn whitepawn2 = new WhitePawn(7, 0);
-        if (whitepawn2.canMove(board)) {
+        if (whitepawn2.canMove(board, 8, 0)) {
             System.out.println("Failure on test 2");
             return false;
         }
@@ -32,7 +32,8 @@ public class WhitePawnTester {
         // Checks if the WhitePawn can move diagonally toward enemy
         WhitePawn whitepawn3 = new WhitePawn(1, 2);
         BlackPawn enemypawn = new BlackPawn(2, 1);
-        if (!whitepawn3.canMove(board)) {
+        board.setPos(enemypawn.getRow(), enemypawn.getCol(), enemypawn);
+        if (!whitepawn3.canMove(board, 2, 1)) {
             System.out.println("Failure on test 3");
             return false;
         }
