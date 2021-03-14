@@ -24,8 +24,8 @@ public class Bishop extends ChessPiece {
         int colDistance = colPos - col;
 
         // Total distance the bishop is set to travel
-        int moveCountRow = abs(rowDistance);
-        int moveCountCol = abs(colDistance);
+        int moveCountRow = Math.abs(rowDistance);
+        int moveCountCol = Math.abs(colDistance);
 
         // These XY counts determine which direction the bishop will move
         boolean RDcount = false;
@@ -46,8 +46,8 @@ public class Bishop extends ChessPiece {
             RUcount = true;
         }
 
-        tempRow = rowPos;
-        tempCol = colPos;
+        int tempRow = rowPos;
+        int tempCol = colPos;
 
         // Moves diagonally until the piece reaches the end or a ChessPiece
         while ((moveCountRow >= 0) && (moveCountCol >= 0)) {
@@ -65,14 +65,14 @@ public class Bishop extends ChessPiece {
                 tempCol -= 1;
             }
             // To the diagonal left downward
-            else if ((TempRow < board.length()) && (TempCol >= 0) &&
+            else if ((tempRow < board.length()) && (tempCol >= 0) &&
                 (board.getPos(tempRow, tempCol) == null) && LDcount) {
                 tempRow += 1;
                 tempCol -= 1;
             }
             // To the diagonal right upward
-            else if ((TempRow >= 0) && (Tempcol < board.length()) &&
-                (board.getPos(tempRow, TempCol) == null) && RUcount) {
+            else if ((tempRow >= 0) && (tempCol < board.length()) &&
+                (board.getPos(tempRow, tempCol) == null) && RUcount) {
                 tempRow -= 1;
                 tempCol += 1;
             }
