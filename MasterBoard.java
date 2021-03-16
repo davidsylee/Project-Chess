@@ -28,6 +28,9 @@ public class MasterBoard {
         if (!WhitePawnTester.whitePawnTester()) {
             compatability = false;
         }
+        if (!BishopTester.bishopTester()) {
+            compatability = false;
+        }
         return compatability;
     }
 

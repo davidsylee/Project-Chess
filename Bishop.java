@@ -12,7 +12,7 @@ public class Bishop extends ChessPiece {
 
     private static String name = "Bishop";
 
-    // The constructor for a Pawn piece
+    // The constructor for a Bishop piece
     public Bishop(int rowPos, int colPos) {
         this.rowPos = rowPos;
         this.colPos = colPos;
@@ -20,6 +20,7 @@ public class Bishop extends ChessPiece {
 
     @Override
     public boolean canMove(GameBoard board, int row, int col) {
+
         int rowDistance = rowPos - row;
         int colDistance = colPos - col;
 
@@ -50,7 +51,7 @@ public class Bishop extends ChessPiece {
         int tempCol = colPos;
 
         // Moves diagonally until the piece reaches the end or a ChessPiece
-        while ((moveCountRow >= 0) && (moveCountCol >= 0)) {
+        while ((moveCountRow > 0) && (moveCountCol > 0)) {
 
             // To the diagonal right downward
             if ((tempRow < board.length()) && (tempCol < board.length()) &&
@@ -59,19 +60,19 @@ public class Bishop extends ChessPiece {
                 tempCol += 1;
             }
             // To the diagonal left upward
-            else if ((tempRow >= 0) && (tempCol >= 0) &&
+            else if ((tempRow > 0) && (tempCol > 0) &&
                 (board.getPos(tempRow, tempCol) == null) && LUcount) {
                 tempRow -= 1;
                 tempCol -= 1;
             }
             // To the diagonal left downward
-            else if ((tempRow < board.length()) && (tempCol >= 0) &&
+            else if ((tempRow < board.length()) && (tempCol > 0) &&
                 (board.getPos(tempRow, tempCol) == null) && LDcount) {
                 tempRow += 1;
                 tempCol -= 1;
             }
             // To the diagonal right upward
-            else if ((tempRow >= 0) && (tempCol < board.length()) &&
+            else if ((tempRow > 0) && (tempCol < board.length()) &&
                 (board.getPos(tempRow, tempCol) == null) && RUcount) {
                 tempRow -= 1;
                 tempCol += 1;
