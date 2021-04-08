@@ -21,7 +21,7 @@ public class BishopTester {
             System.out.println("Failure on test 1");
             return false;
         }
-      
+
         // Checks if the Bishop is restricted after reaching border
         Bishop bishop2 = new Bishop(0, 0);
         if (bishop2.canMove(board, -1, -1)) {
